@@ -1,0 +1,63 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+新しいクロスプラットフォームの PowerShell をお試しください https://aka.ms/pscore6
+
+PS C:\Users\yuiko> cd..
+PS C:\Users> cd..
+PS C:\> Select-String “府” c:\test\都道府県.txt
+
+test\都道府県.txt:26:京都府
+test\都道府県.txt:27:大阪府
+
+
+PS C:\> Select-String “^山” c:\test\都道府県.txt
+
+test\都道府県.txt:6:山形県
+test\都道府県.txt:19:山梨県
+test\都道府県.txt:35:山口県
+
+
+PS C:\> Select-String “島.県” c:\test\都道府県.txt
+
+test\都道府県.txt:32:島根県
+
+
+PS C:\> Select-String “島”,”鳥” c:\test\都道府県.txt
+
+test\都道府県.txt:7:福島県
+test\都道府県.txt:31:鳥取県
+test\都道府県.txt:32:島根県
+test\都道府県.txt:34:広島県
+test\都道府県.txt:36:徳島県
+test\都道府県.txt:46:鹿児島県
+
+
+PS C:\> Select-String “京” c:\test\都道府県.txt | Select-String “都”
+
+test\都道府県.txt:13:東京都
+test\都道府県.txt:26:京都府
+
+
+PS C:\> Select-String -Path “c:\test\都道府県.txt” -NotMatch -Pattern “県”
+
+test\都道府県.txt:1:北海道
+test\都道府県.txt:13:東京都
+test\都道府県.txt:26:京都府
+test\都道府県.txt:27:大阪府
+
+
+PS C:\> Select-String -Path “c:\test\都道府県.txt” -NotMatch -Pattern “道”,”県”
+
+test\都道府県.txt:13:東京都
+test\都道府県.txt:26:京都府
+test\都道府県.txt:27:大阪府
+
+
+PS C:\> Select-String -Path “c:\test\都道府県.txt” -NotMatch “道”,”県” | Select-String “都”
+
+test\都道府県.txt:13:東京都
+test\都道府県.txt:26:京都府
+
+
+PS C:\>
