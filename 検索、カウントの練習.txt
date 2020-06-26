@@ -1,0 +1,27 @@
+PS C:\> (Select-String “府” c:\test\都道府県.txt).Count
+2
+PS C:\> (Select-String “^山” c:\test\都道府県.txt).Count
+3
+PS C:\> (Select-String “島.県” c:\test\都道府県.txt).Count
+1
+PS C:\> (Select-String “島”,”鳥” c:\test\都道府県.txt).Count
+6
+PS C:\> (Select-String “京” c:\test\都道府県.txt | Select-String “都”).Count
+2
+PS C:\> (Select-String -Path “c:\test\都道府県.txt” -NotMatch -Pattern “県”).Count
+4
+PS C:\> (Select-String -Path “c:\test\都道府県.txt” -NotMatch -Pattern “道”,”県”).Count
+3
+PS C:\> (Select-String -Path “c:\test\都道府県.txt” -NotMatch “道”,”県” | Selec t-String “都”).Count
+Selec : 用語 'Selec' は、コマンドレット、関数、スクリプト ファイル、または操作可能なプログラムの名前として認識されませ
+ん。名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確認してから、再試行してくだ
+さい。
+発生場所 行:1 文字:61
++ ... ect-String -Path “c:\test\都道府県.txt” -NotMatch “道”,”県” | Selec t-Strin ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (Selec:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\> (Select-String -Path “c:\test\都道府県.txt” -NotMatch “道”,”県” | Select-String “都”).Count
+2
+PS C:\>
