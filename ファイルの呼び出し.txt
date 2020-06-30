@@ -1,0 +1,4 @@
+
+PS C:\> $input = Get-Content "C:\shell_test\input.txt"
+>> echo $input
+100
